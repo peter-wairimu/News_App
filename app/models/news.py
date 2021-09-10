@@ -1,4 +1,4 @@
-class Movie:
+class Newspaper:
     '''
     Movie class to define Movie Objects
     '''
@@ -7,7 +7,9 @@ class Movie:
         self.id =id
         self.name = name
         self.description = description
-        self.url = 'https://image.tmdb.org/t/p/w500/'+ url
+        self.url = url
         self.category = category
-        self.language, = language
+        self.language = language
         self.country = country
+
+# class Article:
