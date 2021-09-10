@@ -71,9 +71,37 @@ def get_article(article):
 
         movie_sources = None
 
-        if get_movies_response['sources']:
-            movie_sources_list = get_movies_response['sources']
-            movie_sources = process_results(movie_sources_list)
+        if get_movies_response['articles']:
+            movie_sources_list = get_movies_response['articles']
+            movie_sources = process_articles(movie_sources_list)
 
+
+    return movie_sources
+
+
+def process_articles(news_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+
+    Args:
+        movie_list: A list of dictionaries that contain movie details
+
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    movie_sources = []
+    for movie_item in news_list:
+        author = movie_item.get('author')
+        title = movie_item.get('title')
+        description = movie_item.get('description')
+        url = movie_item.get('url')
+        urlToImage = movie_item.get('urlToImage')
+        publishedAt = movie_item.get('publishedAt')
+        content = movie_item.get('content')
+
+
+        if title:
+            movie_object = Movie(title,author,description,url,urlToImage,publishedAt, content)
+            movie_sources.append(movie_object)
 
     return movie_sources
