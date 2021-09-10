@@ -55,3 +55,25 @@ def process_results(news_list):
             movie_sources.append(movie_object)
 
     return movie_sources
+
+
+
+
+def get_article(article):
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_article_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=7d4e000c27af4d38ab95a716258769a8'.format(article)
+
+    with urllib.request.urlopen(get_article_url) as url:
+        get_movies_data = url.read()
+        get_movies_response = json.loads(get_movies_data)
+
+        movie_sources = None
+
+        if get_movies_response['sources']:
+            movie_sources_list = get_movies_response['sources']
+            movie_sources = process_results(movie_sources_list)
+
+
+    return movie_sources
