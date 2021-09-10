@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_movies
+from .request import get_sources
 
 @app.route('/')
 def index():
@@ -10,13 +10,13 @@ def index():
     '''
 
     # Getting popular News
-    popular_movies = get_movies()
-    id = get_movies()
-    name = get_movies()
-    description = get_movies()
-    url = get_movies()
-    category = get_movies()
-    language = get_movies()
-    country = get_movies()
+    popular_movies = get_sources()
+    id = get_sources()
+    name = get_sources()
+    description = get_sources()
+    url = get_sources()
+    category = get_sources()
+    language = get_sources()
+    country = get_sources()
     title = 'Home - Welcome to The best site for Your daily News'
     return render_template('index.html', title = title,popular = popular_movies,id =id,name = name, description = description,url =url,category = category,language = language,country = country)

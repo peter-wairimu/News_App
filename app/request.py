@@ -10,7 +10,7 @@ api_key = app.config['NEWS_API_KEY']
 base_url = app.config["BASE_URL"]
 
 
-def get_movies():
+def get_sources():
     '''
     Function that gets the json response to our url request
     '''
