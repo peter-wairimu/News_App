@@ -14,7 +14,7 @@
         <h3> NEWS</h3>
          <ul>
             {% for popular_movie in popular %}
-                <li>{{ popular_movie.id}}</li>
+               <li><a href="/article/{{ popular_movie.id }}">{{ popular_movie.id}}</a></li>
             {% endfor %}
         </ul>
 

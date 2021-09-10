@@ -10,10 +10,10 @@ def index():
     '''
 
     # Getting popular New
-    popular_news = get_sources()
-    print(popular_news)
+    popular_movie = get_sources()
+    print(popular_movie)
     title = 'Home - Welcome to The best Movie Review Website Online'
-    return render_template('index.html', title = title,popular = popular_news)
+    return render_template('index.html', title = title,popular = popular_movie)
 
 
 @app.route('/article/<id>')
@@ -22,8 +22,9 @@ def article(id):
     view root function that returns articles
 
     '''
-
-    articles = get_article(id)
-    return render_template('article.html',article= articles)
+    popular = get_article(id)
+    print(popular)
+    # articles = get_article(id)
+    return render_template('article.html',article= popular)
 
 
