@@ -1,8 +1,8 @@
 from flask import render_template
-from app import app
-from .request import get_sources,get_article
+from .import main
+from ..request import get_sources,get_article
 
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -16,7 +16,7 @@ def index():
     return render_template('index.html', title = title,popular = popular_movie)
 
 
-@app.route('/article/<id>')
+@main.route('/article/<id>')
 def article(id):
     '''
     view root function that returns articles

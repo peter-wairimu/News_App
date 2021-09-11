@@ -1,15 +1,15 @@
 # from app.views import rticle
-from app import app
-import urllib.request,json
-from .models import news
 
-Movie = news.Newspaper
-Article = news.Article
+import urllib.request,json
+from app.models import Newspaper,Article
+
+# Movie = Newspaper
+# Article = Article
 # Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = None
 
 # Getting the movie base url
-base_url = app.config["BASE_URL"]
+base_url = None
 
 
 def get_sources():
@@ -53,7 +53,7 @@ def process_results(news_list):
         country = movie_item.get('country')
 
         if id:
-            movie_object = Movie(id,name,description,url,category,language,country)
+            movie_object = Newspaper(id,name,description,url,category,language,country)
             movie_sources.append(movie_object)
 
     return movie_sources
@@ -108,18 +108,3 @@ def process_articles(news_list):
 
     return movie_sources
 
-
-def search_news(movie_name):
-    search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
-    with urllib.request.urlopen(search_movie_url) as url:
-        search_movie_data = url.read()
-        search_movie_response = json.loads(search_movie_data)
-
-        search_movie_results = None
-
-        if search_movie_response['results']:
-            search_movie_list = search_movie_response['results']
-            search_movie_results = process_results(search_movie_list)
-
-
-    return search_movie_results
