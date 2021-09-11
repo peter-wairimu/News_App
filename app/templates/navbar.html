@@ -13,6 +13,18 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">News Homepage</a></li>
         </div>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Click here for your preffered news
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                
+                    {% for popular_movie in popular %}
+                       <li><a href="/article/{{ popular_movie.id }}">{{ popular_movie.id}}</a></li>
+                    {% endfor %}
+                
+            </ul>
+          </div>
 
     </div>
+
 </div>

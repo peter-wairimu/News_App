@@ -10,10 +10,14 @@
     <body>
     <div class="container">
         <h3> NEWS</h3>
-         <ul>
-            {% for popular_movie in popular %}
-               <li><a href="/article/{{ popular_movie.id }}">{{ popular_movie.id}}</a></li>
-            {% endfor %}
-        </ul>
+        {% for all in all %}
+        <div class="img responsive">
+            <li><img src="{{all.urlToImage}}" alt="sheep goat"></li>
+
+        </div>
+
+
+        {% endfor %}
+         
     </div>
 {% endblock %}

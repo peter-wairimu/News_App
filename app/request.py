@@ -1,7 +1,7 @@
 # from app.views import rticle
 
 import urllib.request,json
-from app.models import Newspaper,Article
+from app.models import Newspaper,Article,Allnews
 
 # Movie = Newspaper
 # Article = Article
@@ -108,3 +108,50 @@ def process_articles(news_list):
 
     return movie_sources
 
+
+def get_allnews():
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_all_url = 'https://newsapi.org/v2/everything?q=health&apiKey=7d4e000c27af4d38ab95a716258769a8'
+
+    with urllib.request.urlopen(get_all_url) as url:
+        get_movies_data = url.read()
+        get_movies_response = json.loads(get_movies_data)
+
+        movie_sources = None
+
+        if get_movies_response['articles']:
+            movie_sources_list = get_movies_response['articles']
+            movie_sources = process_allnews(movie_sources_list)
+
+
+    return movie_sources
+
+
+def process_allnews(news_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+
+    Args:
+        movie_list: A list of dictionaries that contain movie details
+
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    movie_sources = []
+    for movie_item in news_list:
+        author = movie_item.get('author')
+        title = movie_item.get('title')
+        description = movie_item.get('description')
+        url = movie_item.get('url')
+        urlToImage = movie_item.get('urlToImage')
+        publishedAt = movie_item.get('publishedAt')
+        content = movie_item.get('content')
+
+
+        if title:
+            movie_object = Allnews(author,title,description,url,urlToImage,publishedAt, content)
+            movie_sources.append(movie_object)
+
+    return movie_sources
