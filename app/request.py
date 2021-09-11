@@ -1,8 +1,10 @@
+# from app.views import rticle
 from app import app
 import urllib.request,json
 from .models import news
 
 Movie = news.Newspaper
+Article = news.Article
 # Getting api key
 api_key = app.config['NEWS_API_KEY']
 
@@ -101,7 +103,7 @@ def process_articles(news_list):
 
 
         if title:
-            movie_object = Movie(title,author,description,url,urlToImage,publishedAt, content)
+            movie_object = Article(title,author,description,url,urlToImage,publishedAt, content)
             movie_sources.append(movie_object)
 
     return movie_sources

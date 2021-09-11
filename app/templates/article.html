@@ -1,21 +1,17 @@
-<head>
-    <meta charset="utf-8">
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> Welcome to my news app</title>
-    {% endif %}
-</head>
+{% extends 'base.html'%}
+{%block content%}
+
 
 <div>
+    
     {% for popular_movie in article %}
         <p>{{ popular_movie.author}}</p>
         <p>{{ popular_movie.title}}</p>
         <a href="{{ popular_movie.url}}">
         <p>{{ popular_movie.description}}</p>
         </a>
-        <div>
-        <img src="{{popular_movie.urlToImage}}" alt="">
+        <div class="jumbotron">
+        <img class="img-responsive" src="{{popular_movie.urlToImage}}" alt="goat image">
         </div>
         <p>{{ popular_movie.publishedAt}}</p>
         <p>{{ popular_movie.content}}</p>
@@ -24,3 +20,5 @@
 
     {% endfor %}
 </div>
+
+{% endblock %}

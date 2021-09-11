@@ -1,7 +1,14 @@
+
 {% macro displayMovieList(movie_list) %}
 
     {% for movie in movie_list %}
-        <li>{{ movie.title}}</li>
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+            <li class="text-center">
+                <a href="/article/{{movie.id}}">
+                    {{ movie.name}}</a>
+            </li>
+        </div>
+
     {% endfor %}
 
 {% endmacro %}
