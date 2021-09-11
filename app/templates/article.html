@@ -7,8 +7,8 @@
     {% for popular_movie in article %}
         <p>{{ popular_movie.author}}</p>
         <p>{{ popular_movie.title}}</p>
-        <a href="{{ popular_movie.url}}">
-        <p>{{ popular_movie.description}}</p>
+        <button type="button" class="btn btn-primary"><a href="{{ popular_movie.url}}">Readmore</button>
+        <!-- <p>{{ popular_movie.description}}</p> -->
         </a>
         <div class="jumbotron">
         <img class="img-responsive" src="{{popular_movie.urlToImage}}" alt="goat image">
