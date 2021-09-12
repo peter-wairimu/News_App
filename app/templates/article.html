@@ -11,8 +11,8 @@
 <div class="container">
     
     {% for popular_movie in article %}
-        <p>{{ popular_movie.author}}</p>
-        <p>{{ popular_movie.title}}</p>
+        <p style="font-family:courier">{{ popular_movie.author}}</p>
+        <p style="font-family:courier;">{{ popular_movie.title}}</p>
         <button type="button" class="btn "><a href="{{ popular_movie.url}}">Readmore</button>
         <!-- <p>{{ popular_movie.description}}</p> -->
         </a>
@@ -20,8 +20,8 @@
         <img class="img-responsive" src="{{popular_movie.urlToImage}}" alt="goat image">
         </div>
         <div class="pop">
-        <p>{{ popular_movie.publishedAt}}</p>
-        <p>{{ popular_movie.content}}</p>
+        <p style="color:rgb(11, 118, 133);">{{ popular_movie.publishedAt}}</p>
+        <p style="font-family:courier">{{ popular_movie.content}}</p>
         </div>
 
 
